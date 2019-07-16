@@ -1,0 +1,50 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <div class="btn btn-primary" (click)="onclick('newMatch')">
+          <a mat-list-item >New Match</a>
+      </div>
+     
+      <div class="btn btn-primary" (click)="onclick('Resume')">
+          <a mat-list-item >Resume Match</a>
+      </div>
+      <div class="btn btn-primary" (click)="onclick('help')">
+          <a mat-list-item >Help</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Cricket Scorer</span>
+    </mat-toolbar>
+  
+  <ng-container *ngIf="optionToOpen==='newMatch'">
+     <app-new-match></app-new-match>
+   </ng-container>
+
+   <ng-container *ngIf="optionToOpen==='Resume'">
+     <p>asd</p> Resume
+    </ng-container>
+
+    <ng-container *ngIf="optionToOpen==='help'">
+        help
+       </ng-container>
+     
+  
+
+ 
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
